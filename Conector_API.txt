@@ -1,0 +1,19 @@
+let
+  Fonte = (page as text) =>
+let 
+    urlRequest = "https://API",
+    results = Json.Document(
+      Web.Contents(
+        urlRequest,
+        [
+          Query = [
+            #"token" = "Token",
+            #"page" = page
+          ]
+        ]
+      )
+    )
+in
+  results
+in
+  Fonte

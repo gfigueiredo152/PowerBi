@@ -1,0 +1,13 @@
+let
+  Fonte = NOME_DA_PLANILHA("1"),
+  pg = 1,
+  Source = List.Generate(
+            () => [Consulta = NOME_DA_PLANILHA("1"), pg = 1, has_more = Fonte[has_more]],
+            each [has_more] <> "FALSE",
+            each [
+                pg = [pg] + 1,
+                Consulta = NOME_DA_PLANILHA(Text.From([pg])),
+                has_more = Consulta[has_more]
+            ],
+            each [Consulta]
+        ),
